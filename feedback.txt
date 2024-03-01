@@ -1,0 +1,7 @@
+1182 - Column in Array - Presentation error
+1021 - Banknotes and Coins - Wrong answer, new line was not printe
+1145 - Logical Sequence 2 - Presentation error
+1098 - Sequence IJ 4 - Wrong answer
+1047 - Game Time with Minutes - Wrong answer
+
+I would recommend to use arrays, where you have to use a lot of variables.
