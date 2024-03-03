@@ -1,28 +1,16 @@
 package week1;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Triangle {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        double a = scanner.nextDouble();
-        double b = scanner.nextDouble();
-        double c = scanner.nextDouble();
-        //7,5,7
-        //6,6,10
-        //6,6,6
-        //5,7,2
-        //6,8,10
-        double A = Math.max(a,Math.max(b,c));
-            if((A == a) ||(A == b) || (A == c)) {
-                double B = b;
-                double C = c;
-                if(A == b){
-                    B = a;
-                }
-                if(A == c){
-                    C = a;
-                }
+        double[] nums = {scanner.nextDouble(),scanner.nextDouble(),scanner.nextDouble()};
+        Arrays.sort(nums);
+        double A = nums[2];
+        double B = nums[1];
+        double C = nums[0];
                 if (A >= B + C) {
                     System.out.println("NAO FORMA TRIANGULO");
                 }
@@ -42,7 +30,6 @@ public class Triangle {
                         System.out.println("TRIANGULO ISOSCELES");
                     }
                 }
-            }
     }
 }
 
