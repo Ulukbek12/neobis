@@ -19,7 +19,7 @@ AUTO_INCREMENT = 10;
 
 CREATE TABLE bakeryOrder(
 order_id INT PRIMARY KEY AUTO_INCREMENT,
-fullAmountOf DOUBLE,
+fullAmountOfBakery DOUBLE,
 status VARCHAR(20),
 customer_id INT
 );
