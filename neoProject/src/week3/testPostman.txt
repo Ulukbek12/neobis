@@ -1,0 +1,7 @@
+Перед тем как тестировать через Postman, нажимал на кнопку
+Run в IDEA. Затем брал свой localhost(ttp://localhost:8080) и слева выбирал метод запросы
+например: в Get(all products) http://localhost:8080/products
+	  в Get(by id) http://localhost:8080/products/{id}
+	  в Delete(by id) http://localhost:8080/products/{id}
+Но при request Put and Post, приходилось обновлять или создавать новые объекты используя JSON
+	 
