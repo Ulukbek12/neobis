@@ -1,6 +1,5 @@
-package com.example.week3;
-
-
+package com.example.week3.repository;
+import com.example.week3.entity.Product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
