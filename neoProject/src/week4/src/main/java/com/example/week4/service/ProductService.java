@@ -1,10 +1,8 @@
-package com.example.week3.service;
+package com.example.week4.service;
 
-import com.example.week3.entity.Product;
-import com.example.week3.repository.ProductRepository;
+import com.example.week4.entity.Product;
+import com.example.week4.repository.ProductRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.ArrayList;

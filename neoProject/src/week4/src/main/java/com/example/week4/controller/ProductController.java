@@ -1,8 +1,8 @@
-package com.example.week3.controller;
+package com.example.week4.controller;
 
 
-import com.example.week3.entity.Product;
-import com.example.week3.service.ProductService;
+import com.example.week4.entity.Product;
+import com.example.week4.service.ProductService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

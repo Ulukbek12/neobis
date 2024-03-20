@@ -1,6 +1,6 @@
-package com.example.week3.repository;
+package com.example.week4.repository;
 
-import com.example.week3.entity.Product;
+import com.example.week4.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
