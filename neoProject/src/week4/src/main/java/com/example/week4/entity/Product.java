@@ -1,6 +1,8 @@
 package com.example.week4.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+
 
 @Entity
 @Table(name = "product")
@@ -10,10 +12,13 @@ public class Product {
     @Column(nullable = false)
     private Long id;
     @Column(name = "name")
+    @NotBlank
     private String name;
     @Column(name = "price",nullable = false)
     private double price;
+
     @Column(name = "description")
+    @NotBlank
     private String description;
 
     public Product() {

@@ -3,6 +3,7 @@ package com.example.week4.controller;
 
 import com.example.week4.entity.Product;
 import com.example.week4.service.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,19 +31,19 @@ public class ProductController {
     }
 
     @PostMapping("/products")
-    Product postNewProduct(@RequestBody Product newProduct){
+    Product postNewProduct(@RequestBody @Valid Product newProduct){
         return service.postNewProduct(newProduct);
     }
     @PostMapping("/products/{bulk}")
-    List<Product> createBulkOfProducts(@RequestBody List<Product> bulkOfProducts){
+    List<Product> createBulkOfProducts(@RequestBody List<@Valid Product> bulkOfProducts){
         return service.createBulkOfProducts(bulkOfProducts);
     }
     @PutMapping("/products/{id}")
-    Product updateProduct(@RequestBody Product newProduct, @PathVariable Long id){
+    Product updateProduct(@RequestBody @Valid Product newProduct, @PathVariable Long id){
         return service.updateProduct(newProduct,id);
     }
     @PutMapping("/products")
-    List<Product> updateProducts(@RequestParam("ids") List<Long> ids, @RequestBody List<Product> updatedProducts){
+    List<Product> updateProducts(@RequestParam("ids") List<Long> ids, @RequestBody List<@Valid Product> updatedProducts){
        return service.updateProducts(ids,updatedProducts);
     }
     @DeleteMapping("/products/{id}")
