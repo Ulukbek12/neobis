@@ -1,7 +1,7 @@
 package com.example.week4.entity;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 
 @Entity

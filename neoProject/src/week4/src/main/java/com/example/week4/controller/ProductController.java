@@ -3,9 +3,9 @@ package com.example.week4.controller;
 
 import com.example.week4.entity.Product;
 import com.example.week4.service.ProductService;
-import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
