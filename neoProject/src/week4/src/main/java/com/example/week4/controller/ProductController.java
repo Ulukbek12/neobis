@@ -25,32 +25,32 @@ public class ProductController {
     Product getOneProduct(@PathVariable Long id){
         return service.getOneProduct(id);
     }
-    @GetMapping("/priceGreaterThan/{price}")
+    @GetMapping("/products/{price}")
     public List<Product> getProductsPriceGreaterThan(@PathVariable double price) {
         return service.getProductsPriceGreaterThan(price);
     }
 
-    @PostMapping("/products")
+    @PostMapping("/admin")
     Product postNewProduct(@RequestBody @Valid Product newProduct){
         return service.postNewProduct(newProduct);
     }
-    @PostMapping("/products/{bulk}")
+    @PostMapping("/admin/{bulk}")
     List<Product> createBulkOfProducts(@RequestBody List<@Valid Product> bulkOfProducts){
         return service.createBulkOfProducts(bulkOfProducts);
     }
-    @PutMapping("/products/{id}")
+    @PutMapping("/admin/{id}")
     Product updateProduct(@RequestBody @Valid Product newProduct, @PathVariable Long id){
         return service.updateProduct(newProduct,id);
     }
-    @PutMapping("/products")
+    @PutMapping("/admin")
     List<Product> updateProducts(@RequestParam("ids") List<Long> ids, @RequestBody List<@Valid Product> updatedProducts){
        return service.updateProducts(ids,updatedProducts);
     }
-    @DeleteMapping("/products/{id}")
+    @DeleteMapping("/admin/{id}")
     void deleteOldProduct(@PathVariable Long id){
         service.deleteOldProduct(id);
     }
-    @DeleteMapping("/products")
+    @DeleteMapping("/admin")
     public void deleteAllProducts() {
         service.deleteAllProducts();
     }
