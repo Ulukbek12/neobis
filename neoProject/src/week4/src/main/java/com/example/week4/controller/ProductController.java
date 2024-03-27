@@ -3,24 +3,26 @@ package com.example.week4.controller;
 
 import com.example.week4.entity.Product;
 import com.example.week4.service.ProductService;
+import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
 public class ProductController {
     private final ProductService service;
-
     public ProductController(ProductService service) {
         this.service = service;
     }
-
+    @GetMapping("/user")
+    ResponseEntity<String> User(){
+        return ResponseEntity.ok().body("User");
+    }
     @GetMapping("/products")
     List<Product> getAllProduct(){
         return service.getAllProduct();
     }
-
     @GetMapping("/products/{id}")
     Product getOneProduct(@PathVariable Long id){
         return service.getOneProduct(id);
@@ -29,7 +31,6 @@ public class ProductController {
     public List<Product> getProductsPriceGreaterThan(@PathVariable double price) {
         return service.getProductsPriceGreaterThan(price);
     }
-
     @PostMapping("/admin")
     Product postNewProduct(@RequestBody @Valid Product newProduct){
         return service.postNewProduct(newProduct);
