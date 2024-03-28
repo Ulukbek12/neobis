@@ -44,8 +44,10 @@ public class SecurityConfig {
                 .authorizeHttpRequests(request -> {
                     request.requestMatchers("/register").permitAll();
                     request.requestMatchers("/user").permitAll();
+                    request.requestMatchers("/login").permitAll();
                 }).formLogin(Customizer.withDefaults()).build();
 
     }
+
 }
 
