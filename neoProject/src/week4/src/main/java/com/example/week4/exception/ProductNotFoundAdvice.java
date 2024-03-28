@@ -16,13 +16,4 @@ public class ProductNotFoundAdvice{
     }
 }
 
-//@RestControllerAdvice
-//public class ProductNotFoundAdvice {
-//        @ResponseBody
-//        @ExceptionHandler(ProductNotFoundException.class)
-//        @ResponseStatus(HttpStatus.NOT_FOUND)
-//        String employeeNotFoundHandler(ProductNotFoundException ex) {
-//            return ex.getMessage();
-//        }
-//    }
 
