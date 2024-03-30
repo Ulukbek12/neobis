@@ -22,8 +22,12 @@ public class AuthenticationController {
     private final UserDao userDao;
     private final JwtUtils jwtUtils;
 
-    @PostMapping("/authenticate")
+    @PostMapping
     public ResponseEntity<String> authenticate(@RequestBody AuthenticationRequest request){
+        System.out.println("Received authentication request:");
+        System.out.println("Method: POST");
+        System.out.println("URI: /api/v1/auth");
+        System.out.println("Request Body: " + request.toString());
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
         );
