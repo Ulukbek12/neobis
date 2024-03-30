@@ -1,10 +1,9 @@
 package com.example.week4.controller;
 
 import com.example.week4.config.JwtUtils;
-import com.example.week4.dao.UserDao;
 import com.example.week4.dto.AuthenticationRequest;
+import com.example.week4.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class AuthenticationController {
     private final AuthenticationManager authenticationManager;
-    private final UserDao userDao;
+    private final UserRepository userRepository;
     private final JwtUtils jwtUtils;
 
     @PostMapping
@@ -31,7 +30,7 @@ public class AuthenticationController {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
         );
-        final UserDetails user = userDao.findUserByEmail(request.getEmail());
+        final UserDetails user = userRepository.findByEmail(request.getEmail());
         if(user != null){
             return ResponseEntity.ok(jwtUtils.generateToken(user));
         }

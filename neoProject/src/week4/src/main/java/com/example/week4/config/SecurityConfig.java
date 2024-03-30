@@ -1,6 +1,6 @@
 package com.example.week4.config;
 
-import com.example.week4.dao.UserDao;
+import com.example.week4.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,7 +25,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfig {
    private final JwtAthFilter jwtAuthFilter;
-   private final UserDao userDao;
+   private final UserRepository userRepository;
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -63,7 +63,7 @@ public class SecurityConfig {
         return new UserDetailsService(){
             @Override
             public UserDetails loadUserByUsername(String email)throws UsernameNotFoundException{
-                return userDao.findUserByEmail(email);
+                return userRepository.findByEmail(email);
             }
         };
     }

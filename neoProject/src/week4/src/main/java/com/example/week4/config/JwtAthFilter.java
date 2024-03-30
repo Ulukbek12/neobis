@@ -1,6 +1,6 @@
 package com.example.week4.config;
 
-import com.example.week4.dao.UserDao;
+import com.example.week4.repository.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -25,7 +25,7 @@ import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 @RequiredArgsConstructor
 public class JwtAthFilter extends OncePerRequestFilter {
 
-    private final UserDao userDao;
+    private final UserRepository userRepository;
     private final JwtUtils jwtUtils;
 
 
@@ -45,7 +45,7 @@ public class JwtAthFilter extends OncePerRequestFilter {
         jwtToken = authHeader.substring(7);
         userEmail = jwtUtils.extractUsername(jwtToken);
         if(userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null){
-            UserDetails userDetails = userDao.findUserByEmail(userEmail);
+            UserDetails userDetails = userRepository.findByEmail(userEmail);
             final boolean isTokenValid;
             if(jwtUtils.isTokenValid(jwtToken,userDetails)){
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
