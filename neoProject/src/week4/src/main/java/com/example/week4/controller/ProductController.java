@@ -4,46 +4,44 @@ package com.example.week4.controller;
 import com.example.week4.entity.Product;
 import com.example.week4.service.ProductService;
 import jakarta.validation.Valid;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/products")
 public class ProductController {
     private final ProductService service;
     public ProductController(ProductService service) {
         this.service = service;
     }
-    @GetMapping("/user")
-    ResponseEntity<String> User(){
-        return ResponseEntity.ok().body("User");
-    }
-    @GetMapping("/products")
+
+    @GetMapping
     List<Product> getAllProduct(){
         return service.getAllProduct();
     }
-    @GetMapping("/products/{id}")
+    @GetMapping("/{id}")
     Product getOneProduct(@PathVariable Long id){
         return service.getOneProduct(id);
     }
-    @GetMapping("/products/{price}")
+    @GetMapping("/greaterThan/{price}")
     public List<Product> getProductsPriceGreaterThan(@PathVariable double price) {
         return service.getProductsPriceGreaterThan(price);
     }
-    @PostMapping("/admin")
+
+    @PostMapping("/add/admin")
     Product postNewProduct(@RequestBody @Valid Product newProduct){
         return service.postNewProduct(newProduct);
     }
-    @PostMapping("/admin/{bulk}")
+    @PostMapping("/addBulk/admin")
     List<Product> createBulkOfProducts(@RequestBody List<@Valid Product> bulkOfProducts){
         return service.createBulkOfProducts(bulkOfProducts);
     }
-    @PutMapping("/admin/{id}")
+    @PutMapping("/updateProduct/user/{id}")
     Product updateProduct(@RequestBody @Valid Product newProduct, @PathVariable Long id){
         return service.updateProduct(newProduct,id);
     }
-    @PutMapping("/admin")
+    @PutMapping("/updateProducts/user")
     List<Product> updateProducts(@RequestParam("ids") List<Long> ids, @RequestBody List<@Valid Product> updatedProducts){
        return service.updateProducts(ids,updatedProducts);
     }
@@ -51,7 +49,7 @@ public class ProductController {
     void deleteOldProduct(@PathVariable Long id){
         service.deleteOldProduct(id);
     }
-    @DeleteMapping("/admin")
+    @DeleteMapping("/deleteAll/admin")
     public void deleteAllProducts() {
         service.deleteAllProducts();
     }
