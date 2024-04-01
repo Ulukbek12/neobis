@@ -3,19 +3,17 @@ package com.example.week4.service;
 import com.example.week4.entity.Product;
 import com.example.week4.exception.ProductNotFoundException;
 import com.example.week4.repository.ProductRepository;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ProductService {
     private final ProductRepository repository;
-
-    public ProductService(ProductRepository repository) {
-        this.repository = repository;
-    }
-
     public List<Product> getAllProduct() {
         return repository.findAll();
     }

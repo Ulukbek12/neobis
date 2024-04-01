@@ -4,17 +4,16 @@ package com.example.week4.controller;
 import com.example.week4.entity.Product;
 import com.example.week4.service.ProductService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/products")
+@RequiredArgsConstructor
 public class ProductController {
     private final ProductService service;
-    public ProductController(ProductService service) {
-        this.service = service;
-    }
 
     @GetMapping
     List<Product> getAllProduct(){
