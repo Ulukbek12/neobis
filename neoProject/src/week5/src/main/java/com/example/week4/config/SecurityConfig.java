@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -20,25 +21,25 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-public class SecurityConfig {
-   private final JwtAthFilter jwtAuthFilter;
-   private final UserRepository userRepository;
+public class SecurityConfig{
+    private final JwtAthFilter jwtAthFilter;
+    private final UserRepository userRepository;
+    св ё
     @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth->auth
+                .authorizeHttpRequests(auth-> auth
                         .requestMatchers("/api/v1/auth","/api/v1/register").permitAll()
-                        .requestMatchers("/api/v1/greetings","/products").authenticated()
-                        .anyRequest().authenticated())
-
+                        .requestMatchers("/products/**").authenticated())
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authenticationProvider(authenticationProvider())
-                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(jwtAthFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
     @Bean
@@ -48,8 +49,8 @@ public class SecurityConfig {
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config)
-            throws Exception {
-        return config.getAuthenticationManager();
+        throws Exception {
+            return config.getAuthenticationManager();
     }
     @Bean
     public AuthenticationProvider authenticationProvider(){
@@ -57,15 +58,16 @@ public class SecurityConfig {
         authenticationProvider.setUserDetailsService(userDetailsService());
         authenticationProvider.setPasswordEncoder(passwordEncoder());
         return authenticationProvider;
-    }
-
-    @Bean
-    public UserDetailsService userDetailsService(){
-        return new UserDetailsService(){
-            @Override
-            public UserDetails loadUserByUsername(String email)throws UsernameNotFoundException{
-                return userRepository.findByEmail(email);
-            }
-        };
-    }
+        }
+        public UserDetailsService userDetailsService(){
+            return new UserDetailsService() {
+                @Override
+                public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+                    return userRepository.findByEmail(email);
+                }
+            };
+        }
 }
+
+
+
