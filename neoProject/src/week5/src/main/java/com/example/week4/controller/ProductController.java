@@ -15,32 +15,32 @@ import java.util.List;
 public class ProductController {
     private final ProductService service;
 
-    @GetMapping
+    @GetMapping("/user")
     List<Product> getAllProduct(){
         return service.getAllProduct();
     }
-    @GetMapping("/{id}")
+    @GetMapping("/user/{id}")
     Product getOneProduct(@PathVariable Long id){
         return service.getOneProduct(id);
     }
-    @GetMapping("/greaterThan/{price}")
+    @GetMapping("/user/greaterThan/{price}")
     public List<Product> getProductsPriceGreaterThan(@PathVariable double price) {
         return service.getProductsPriceGreaterThan(price);
     }
 
-    @PostMapping("/add/admin")
+    @PostMapping("/admin/add")
     Product postNewProduct(@RequestBody @Valid Product newProduct){
         return service.postNewProduct(newProduct);
     }
-    @PostMapping("/addBulk/admin")
+    @PostMapping("/admin/addBulk")
     List<Product> createBulkOfProducts(@RequestBody List<@Valid Product> bulkOfProducts){
         return service.createBulkOfProducts(bulkOfProducts);
     }
-    @PutMapping("/updateProduct/user/{id}")
+    @PutMapping("/user/updateProduct/{id}")
     Product updateProduct(@RequestBody @Valid Product newProduct, @PathVariable Long id){
         return service.updateProduct(newProduct,id);
     }
-    @PutMapping("/updateProducts/user")
+    @PutMapping("/user/updateProducts")
     List<Product> updateProducts(@RequestParam("ids") List<Long> ids, @RequestBody List<@Valid Product> updatedProducts){
        return service.updateProducts(ids,updatedProducts);
     }
@@ -48,7 +48,7 @@ public class ProductController {
     void deleteOldProduct(@PathVariable Long id){
         service.deleteOldProduct(id);
     }
-    @DeleteMapping("/deleteAll/admin")
+    @DeleteMapping("/admin/deleteAll")
     public void deleteAllProducts() {
         service.deleteAllProducts();
     }

@@ -53,53 +53,5 @@ public class JwtUtils {
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
-    //    //Создает определенный токен с определенными клеймами на основе данных пользователя
-//    private String createToken(Map<String,Object> claims,UserDetails userDetails){
-//            return Jwts.builder().setClaims(claims)
-//                    .setSubject(userDetails.getUsername())
-//                    .claim("authorities",userDetails.getAuthorities())
-//                    .setIssuedAt(new Date(System.currentTimeMillis()))
-//                    .setExpiration(new Date(System.currentTimeMillis() + TimeUnit.HOURS.toMillis(24)))
-//                    .signWith(SignatureAlgorithm.HS256, jwtSigningKey).compact();
-//    }
-    //Парсит токен и извлекает все его клэймы
-//    private Claims extractAllClaims(String token){
-//        return Jwts.parser().setSigningKey(jwtSigningKey).parseClaimsJws(token).getBody();
-//    }
-//    //извлекает любой claim из токена с помощью claimResolver
-//    public <T> T extractClaim(String token, Function<Claims, T> claimsResolver){
-//        final Claims claims = extractAllClaims(token);
-//        return claimsResolver.apply(claims);
-//    }
-//    //извлекает имя пользователя из токена
-//    public String extractUsername(String token){
-//        return extractClaim(token,Claims::getSubject);
-//    }
-//    //извлекает дату экспирации из токена
-//    public Date extractExpiration(String token){
-//        return extractClaim(token,Claims::getExpiration);
-//    }
-//    //проверяет на наличие какогото определенного claim в токене
-//    public boolean hasClaim(String token,String claimName){
-//        final Claims claims = extractAllClaims(token);
-//        return claims.get(claimName) != null;
-//    }
-//
-//    //Проверяет истек ли срок годности токена
-//    private Boolean isTokenExpired(String token){
-//        return extractExpiration(token).before(new Date());
-//    }
-
-//    //Генерирует новый токен на основе данных пользователя userDetails
-//    public String generateToken(UserDetails userDetails){
-//        Map<String,Object> claims = new HashMap<>();
-//        return createToken(claims,userDetails);
-//    }
-
-//    //Проверяет является ли данный токен действительным для опр пользователя
-//    public Boolean isTokenValid(String token,UserDetails userDetails){
-//        final String username = extractUsername(token);
-//        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
-//    }
 }
 

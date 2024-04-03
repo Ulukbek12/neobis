@@ -28,7 +28,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig{
     private final JwtAthFilter jwtAthFilter;
     private final UserRepository userRepository;
-    св ё
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http
@@ -36,8 +35,6 @@ public class SecurityConfig{
                 .authorizeHttpRequests(auth-> auth
                         .requestMatchers("/api/v1/auth","/api/v1/register").permitAll()
                         .requestMatchers("/products/**").authenticated())
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAthFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
