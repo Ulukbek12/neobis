@@ -1,8 +1,8 @@
 package сom.example.week4.product;
 
 
-import com.example.week4.ProductApplication;
-import com.example.week4.entity.Product;
+import com.example.week5.ProductApplication;
+import com.example.week5.entity.Product;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -65,6 +65,7 @@ public class ProductControllerIntegrationTest {
                 .andDo(print())
                 .andExpect(status().isOk());
     }
+
     @Test
     @WithMockUser(username = "utoraliev@gmail.com",roles = "ADMIN")
     public void postBulkOfProductsTest() throws Exception{
@@ -112,7 +113,7 @@ public class ProductControllerIntegrationTest {
     @Test
     @WithMockUser(username = "utoraliev@gmail.com",roles = "ADMIN")
     public void deleteProductTest() throws Exception{
-        Long productId = 14L;
+        Long productId = 22L;
         mockMvc.perform(delete("/products/admin/{id}",productId))
                 .andDo(print())
                 .andExpect(status().isOk());

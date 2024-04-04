@@ -1,14 +1,13 @@
-package com.example.week4.service;
+package com.example.week5.service;
 
 
-import com.example.week4.config.JwtUtils;
-import com.example.week4.dto.Request;
-import com.example.week4.entity.User;
-import com.example.week4.exception.UserExists;
-import com.example.week4.exception.UserNotFound;
-import com.example.week4.repository.UserRepository;
+import com.example.week5.config.JwtUtils;
+import com.example.week5.dto.Request;
+import com.example.week5.entity.User;
+import com.example.week5.exception.UserExists;
+import com.example.week5.exception.UserNotFound;
+import com.example.week5.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

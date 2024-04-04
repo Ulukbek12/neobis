@@ -1,6 +1,6 @@
-package com.example.week4.config;
+package com.example.week5.config;
 
-import com.example.week4.repository.UserRepository;
+import com.example.week5.repository.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

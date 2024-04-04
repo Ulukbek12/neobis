@@ -1,4 +1,4 @@
-package com.example.week4.exception;
+package com.example.week5.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;

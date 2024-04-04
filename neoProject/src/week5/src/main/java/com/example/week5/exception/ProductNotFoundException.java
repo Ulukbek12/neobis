@@ -1,4 +1,4 @@
-package com.example.week4.exception;
+package com.example.week5.exception;
 
 public class ProductNotFoundException extends RuntimeException{
    public ProductNotFoundException(Long id){

@@ -1,4 +1,4 @@
-package com.example.week4.exception;
+package com.example.week5.exception;
 
 public class  UserNotFound extends RuntimeException{
     public UserNotFound(String message){

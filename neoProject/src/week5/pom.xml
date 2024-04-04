@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>week3</artifactId>
+    <artifactId>week5</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Product</name>
     <description>neobis api endpoints project</description>

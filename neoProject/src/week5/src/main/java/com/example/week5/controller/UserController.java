@@ -1,7 +1,7 @@
-package com.example.week4.controller;
+package com.example.week5.controller;
 
-import com.example.week4.dto.Request;
-import com.example.week4.service.UserService;
+import com.example.week5.dto.Request;
+import com.example.week5.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

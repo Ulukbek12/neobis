@@ -1,9 +1,8 @@
-package com.example.week4.service;
+package com.example.week5.service;
 
-import com.example.week4.entity.Product;
-import com.example.week4.exception.ProductNotFoundException;
-import com.example.week4.repository.ProductRepository;
-import lombok.NoArgsConstructor;
+import com.example.week5.entity.Product;
+import com.example.week5.exception.ProductNotFoundException;
+import com.example.week5.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

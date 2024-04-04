@@ -1,4 +1,4 @@
-package com.example.week4.dto;
+package com.example.week5.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

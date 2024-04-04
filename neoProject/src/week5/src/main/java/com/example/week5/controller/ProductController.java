@@ -1,10 +1,11 @@
-package com.example.week4.controller;
+package com.example.week5.controller;
 
 
-import com.example.week4.entity.Product;
-import com.example.week4.service.ProductService;
+import com.example.week5.entity.Product;
+import com.example.week5.service.ProductService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

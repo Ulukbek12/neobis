@@ -1,6 +1,6 @@
-package com.example.week4.repository;
+package com.example.week5.repository;
 
-import com.example.week4.entity.User;
+import com.example.week5.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 
