@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 //почему то эти метода влияют на основную бд, хотя я использовал h2 memory
 //позже постораюсь разобраться, а так week5 вроде закончен
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = ProductApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = ProductApplication.class)
 @AutoConfigureMockMvc
 public class ProductControllerIntegrationTest {
     @Autowired
@@ -40,7 +40,7 @@ public class ProductControllerIntegrationTest {
     @Test
     @WithMockUser(username = "utoraliev@gmail.com", roles = "ADMIN")
     public void getOneProductTest()throws Exception{
-        Long productId = 5L;
+        Long productId = 17L;
         this.mockMvc.perform(get("/products/user/{id}",productId))
                 .andDo(print())
                 .andExpect(status().isOk());
@@ -101,9 +101,7 @@ public class ProductControllerIntegrationTest {
                 new Product("Updated Product 1",10.0,"Test desc 1"),
                 new Product("Updated Product 2", 11.0,"Test desc 2")
         );
-
         String productsJson = objectMapper.writeValueAsString(products);
-
         mockMvc.perform(put("/products/user/updateProducts")
                         .content(productsJson)
                         .contentType(MediaType.APPLICATION_JSON)
