@@ -1,16 +1,15 @@
 package com.example.week5.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Request {
-    private String email;
-    private String password;
+@FieldDefaults(level = AccessLevel.PRIVATE)
 
+public class Request {
+    String email;
+    String password;
 }

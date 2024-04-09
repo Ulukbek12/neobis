@@ -1,0 +1,8 @@
+# Используем официальный образ MySQL
+FROM mysql:latest
+
+# Устанавливаем переменную окружения для пароля root
+ENV MYSQL_ROOT_PASSWORD=F543689c
+
+# Копируем скрипт инициализации базы данных в контейнер
+COPY ./init.sql /docker-entrypoint-initdb.d/

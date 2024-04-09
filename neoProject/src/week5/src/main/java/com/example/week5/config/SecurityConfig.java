@@ -1,7 +1,9 @@
 package com.example.week5.config;
 
 import com.example.week5.repository.UserRepository;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -23,16 +25,17 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
+@FieldDefaults(makeFinal = true,  level = AccessLevel.PRIVATE)
 public class SecurityConfig{
-    private final JwtAthFilter jwtAthFilter;
-    private final UserRepository userRepository;
+     JwtAthFilter jwtAthFilter;
+     UserRepository userRepository;
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth-> auth
                         .requestMatchers("/api/v1/auth","/api/v1/register").permitAll()
-                        .requestMatchers("/products/**").authenticated())
+                        .anyRequest().authenticated())
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAthFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
@@ -54,6 +57,7 @@ public class SecurityConfig{
         authenticationProvider.setPasswordEncoder(passwordEncoder());
         return authenticationProvider;
         }
+        @Bean
         public UserDetailsService userDetailsService(){
             return new UserDetailsService() {
                 @Override

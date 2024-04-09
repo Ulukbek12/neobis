@@ -1,0 +1,301 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Week5 project API Swagger",
+    "description": "This API documentation is my first try to use Swagger and document own API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080/api/v1"
+    }
+  ],
+  "paths": {
+    "/products": {
+      "get": {
+        "summary": "Get all products",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "summary": "Add a new product",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/products/{id}": {
+      "get": {
+        "summary": "Get a product by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update an existing product",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an existing product",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/products/greaterThan/{price}": {
+      "get": {
+        "summary": "Get products greater than a specific price",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "price",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/products/addBulk": {
+      "post": {
+        "summary": "Add bulk of products",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/products/updateProducts": {
+      "put": {
+        "summary": "Update multiple products",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "updatedProducts": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Product"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/products/deleteAll": {
+      "delete": {
+        "summary": "Delete all products",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/auth": {
+      "post": {
+        "summary": "Authenticate user",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Request"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/register": {
+      "post": {
+        "summary": "Register user",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Request"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Product": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The unique identifier for the product."
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the product."
+          },
+          "price": {
+            "type": "number",
+            "format": "double",
+            "description": "The price of the product."
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of the product."
+          }
+        },
+        "example": {
+          "id": 1,
+          "name": "Example Product",
+          "price": 10.99,
+          "description": "This is an example product."
+        }
+      },
+      "Request": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "The email address of the user."
+          },
+          "password": {
+            "type": "string",
+            "description": "The password of the user."
+          }
+        },
+        "example": {
+          "email": "example@example.com",
+          "password": "password123"
+        }
+      }
+    }
+  }
+}

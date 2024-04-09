@@ -23,12 +23,15 @@ public class User implements UserDetails {
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "email")
     @NotBlank
     private String email;
+
     @Column(name = "password")
     @NotBlank
     private String password;
+
     @Column(name = "role")
     @NotBlank
     private String role;

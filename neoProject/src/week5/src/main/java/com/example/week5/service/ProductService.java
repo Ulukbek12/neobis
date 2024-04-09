@@ -2,8 +2,11 @@ package com.example.week5.service;
 
 import com.example.week5.entity.Product;
 import com.example.week5.exception.ProductNotFoundException;
+import com.example.week5.interfaces.ProductServices;
 import com.example.week5.repository.ProductRepository;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,8 +14,9 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ProductService {
-    private final ProductRepository repository;
+@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
+public class ProductService implements ProductServices {
+    ProductRepository repository;
     public List<Product> getAllProduct() {
         return repository.findAll();
     }
@@ -26,7 +30,7 @@ public class ProductService {
     public List<Product> createBulkOfProducts(List<Product> bulk){
         return repository.saveAll(bulk);
     }
-    public  Product postNewProduct(Product newProduct){
+    public Product postNewProduct(Product newProduct){
         return repository.save(newProduct);
     }
 

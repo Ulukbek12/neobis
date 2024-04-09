@@ -2,7 +2,9 @@ package com.example.week5.controller;
 
 import com.example.week5.dto.Request;
 import com.example.week5.service.UserService;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1")
 @RequiredArgsConstructor
+@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class UserController {
-    private final UserService userService;
-
+     UserService userService;
     @PostMapping("/auth")
     public ResponseEntity<String> authenticate(@RequestBody Request request){
         return userService.authenticate(request);
